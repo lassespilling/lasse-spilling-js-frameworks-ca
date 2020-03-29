@@ -51,6 +51,27 @@ function GameDetail() {
     if (loading) {
         return <Loading />;
     }
+
+    let date = new Date(detail.released);
+    let year = date.getFullYear();
+    let day = date.getDay();
+    let month = {};
+    month.number = date.getMonth();
+    month.names = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
+    month.current = month.names[month.number];
     return (
         <>
             <Row className="">
@@ -74,22 +95,22 @@ function GameDetail() {
             </Row>
             <FadeIn>
                 <Row className="mb-5 pb-5">
+                    <div
+                        className="card__menu--topright"
+                        style={{ top: "4rem" }}
+                    >
+                        <Badge variant="warning" className="mr-1">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/2/20/Metacritic.svg"
+                                alt=""
+                                height="11em"
+                                className="mr-1"
+                            />
+                            {detail.metacritic}
+                        </Badge>
+                    </div>
                     <Col md={6} className="detail-image text-center">
                         <h1 className="mb-0 d-md-none">{detail.name}</h1>
-                        <div
-                            className="card__menu--topright"
-                            style={{ top: "2rem" }}
-                        >
-                            <Badge variant="warning" className="mr-1">
-                                <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/2/20/Metacritic.svg"
-                                    alt=""
-                                    height="11em"
-                                    className="mr-1"
-                                />
-                                {detail.metacritic}
-                            </Badge>
-                        </div>
                         <Carousel
                             className="btn btn-lg btn-light font-italic"
                             style={{
@@ -188,7 +209,9 @@ function GameDetail() {
                             <tbody>
                                 <tr>
                                     <td>{detail.id}</td>
-                                    <td>{detail.released}</td>
+                                    <td>
+                                        {day} {month.current} {year}
+                                    </td>
                                     <td>{detail.rating}</td>
                                 </tr>
                             </tbody>

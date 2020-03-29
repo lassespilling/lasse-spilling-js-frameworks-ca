@@ -42,3 +42,10 @@
 .clear-search__button {
     margin-left: 10px;
 }
+
+.platformBrand {
+    height: 1.5em;
+    &--invert {
+        filter: brightness(0) invert(1);
+    }
+}

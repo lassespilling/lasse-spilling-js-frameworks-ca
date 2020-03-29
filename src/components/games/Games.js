@@ -43,34 +43,6 @@ function Games() {
                 }, 0)
             );
     }, []);
-    // const storedLocalFav = JSON.parse(localStorage.getItem("favorites"));
-    // const setNewFavorite = (newfav, id) => {
-    //     if (favorites.includes(newfav)) {
-    //         // If newfav already exists in fav array
-
-    //         // Remove existing fav from array
-    //         setFavorite(favorites.filter(e => e !== newfav));
-
-    //         // Disable fav btn
-    //         setFavDisabled(favDisabled.filter(e => e !== id));
-    //     } else if (!favorites.includes(newfav)) {
-    //         // If not favorites
-    //         if (storedLocalFav) {
-    //             // If favs stored locally
-    //             // Set state from local, add favorite to state array
-    //             setFavorite(storedLocalFav => [...storedLocalFav, newfav]);
-    //             // Update local storage
-    //             localStorage.setItem("favorites", JSON.stringify(favorites));
-    //         } else {
-    //             // If no favs stored locally
-    //             // Add favorite to state array
-    //             setFavorite(favorites => [...favorites, newfav]);
-    //             // Update local storage
-    //             localStorage.setItem("favorites", JSON.stringify(favorites));
-    //         }
-    //         setFavDisabled(favDisabled => [...favDisabled, id]);
-    //     }
-    // };
     const setNewFavorite = (newfav, id) => {
         if (favorites.includes(newfav)) {
             // Remove existing fav from array
