@@ -7,6 +7,7 @@ function Search({ handleSearch }) {
     return (
         <InputGroup className="search">
             <FormControl
+                type="search"
                 placeholder="Search by name..."
                 onChange={event => handleSearch(event)}
             />

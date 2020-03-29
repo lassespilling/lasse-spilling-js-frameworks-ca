@@ -18,6 +18,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
 import Table from "react-bootstrap/Table";
+import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 
 // Font awesome
@@ -75,6 +76,20 @@ function GameDetail() {
                 <Row className="mb-5 pb-5">
                     <Col md={6} className="detail-image text-center">
                         <h1 className="mb-0 d-md-none">{detail.name}</h1>
+                        <div
+                            className="card__menu--topright"
+                            style={{ top: "2rem" }}
+                        >
+                            <Badge variant="warning" className="mr-1">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/2/20/Metacritic.svg"
+                                    alt=""
+                                    height="11em"
+                                    className="mr-1"
+                                />
+                                {detail.metacritic}
+                            </Badge>
+                        </div>
                         <Carousel
                             className="btn btn-lg btn-light font-italic"
                             style={{
@@ -96,8 +111,8 @@ function GameDetail() {
                         <Carousel
                             className="overflow-hidden"
                             style={{
-                                borderTopLeftRadius: "1rem",
-                                borderTopRightRadius: "1rem"
+                                borderTopLeftRadius: ".5rem",
+                                borderTopRightRadius: ".5rem"
                             }}
                         >
                             <Carousel.Item

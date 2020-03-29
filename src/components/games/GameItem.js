@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 import ScrollAnimation from "react-animate-on-scroll";
 import Emoji from "../layout/Emoji";
 import "animate.css/animate.min.css";
@@ -16,17 +17,59 @@ function GameItem({
     favorite,
     favDisabled
 }) {
+    let date = new Date(released);
+    let year = date.getFullYear();
+    let month = {};
+    month.number = date.getMonth();
+    month.names = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
+    month.current = month.names[month.number];
     return (
-        <ScrollAnimation animateIn="fadeIn" animateOnce="true" offset="50">
+        <ScrollAnimation animateIn="fadeIn" animateOnce="true">
             <Card className="bg-dark text-white">
-                <Card.Img variant="top" src={image} />
+                <Card.Img
+                    variant="top"
+                    src={image}
+                    style={{
+                        height: 150,
+                        objectFit: "cover",
+                        objectPosition: "top"
+                    }}
+                />
+                <div className="card__menu--topleft">{name}</div>
+                <div className="card__menu--topright">
+                    <Badge variant="warning" className="mr-1">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/2/20/Metacritic.svg"
+                            alt=""
+                            height="11em"
+                            className="mr-1"
+                        />
+                        {rating}
+                    </Badge>
+                    <Badge variant="secondary">
+                        {month.current}, {year}
+                    </Badge>
+                </div>
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
+                    {/* <Card.Title>{name}</Card.Title>
                     <Card.Text>Rating: {rating}</Card.Text>
                     <Card.Text className="mb-3">
                         <b>Released:</b> <br />
                         {released}
-                    </Card.Text>
+                    </Card.Text> */}
                     <div className="row m-0 p-0">
                         <Link to={"games/" + id} className="col-9 p-0 pr-2">
                             <Button variant="secondary" block>

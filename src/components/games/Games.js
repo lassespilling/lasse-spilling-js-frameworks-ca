@@ -19,6 +19,9 @@ import Loading from "../layout/Loading";
 import FadeIn from "react-fade-in";
 import "./_games.scss";
 
+import ScrollAnimation from "react-animate-on-scroll";
+import "animate.css/animate.min.css";
+
 function Games() {
     const [games, setGames] = useState([]);
     const [favorites, setFavorite] = UseStickyState([], "favorites");
@@ -128,20 +131,27 @@ function Games() {
 
             <FadeIn>
                 <Search handleSearch={searchCards} />
-                <Row>
+                <Row className="mb-5 pb-5">
                     {searchedGames.map(game => {
                         const {
                             id,
                             name,
                             background_image,
-                            rating,
+                            metacritic,
                             released
                         } = game;
                         return (
-                            <Col xs={6} sm={6} md={4} lg={4} xl={3} key={id}>
+                            <Col
+                                xs={12}
+                                sm={12}
+                                md={12}
+                                lg={12}
+                                xl={6}
+                                key={id}
+                            >
                                 <GameItem
                                     id={id}
-                                    rating={rating}
+                                    rating={metacritic}
                                     name={name}
                                     favDisabled={favDisabled}
                                     key={id + 1}
