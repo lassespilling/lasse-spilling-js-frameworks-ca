@@ -1,0 +1,32 @@
+.scrollDown {
+    position: relative;
+    margin-bottom: 4rem;
+    font-size: 1rem;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    &:before {
+        content: "";
+        pointer-events: none;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        opacity: 0.6;
+        background: linear-gradient(0deg, black, transparent 20%);
+    }
+    &:after {
+        content: "↓ Scroll down";
+        text-align: center;
+        width: 100%;
+        color: cyan;
+        text-shadow: 0px 0px 5px cyan;
+        position: absolute;
+        line-height: 2.5rem;
+        border-radius: 1rem;
+        pointer-events: none;
+        z-index: 4;
+        box-shadow: 0px 0px 5px cyan, 0px 0px 15px cyan;
+        height: 0.1rem;
+    }
+}

@@ -1,0 +1,26 @@
+/* Forms */
+input {
+    min-width: 20rem;
+}
+.error {
+    color: rgb(245, 121, 19);
+    letter-spacing: 0.05rem;
+    font-size: 0.8rem;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.336),
+        rgba(0, 255, 242, 0.178)
+    );
+    margin: 0.3rem 0;
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+    &:before {
+        content: "🔥 ";
+    }
+}
+
+// Dark forms
+.form-control {
+    filter: invert(1) hue-rotate(150deg);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3) !important;
+}

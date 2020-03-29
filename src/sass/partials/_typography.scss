@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "color-emoji";
+    src: local("Apple Color Emoji"), local("Segoe UI Emoji"),
+        local("Segoe UI Symbol"), local("Noto Color Emoji");
+}
+// Typography
+h1 {
+    margin-block-end: 1em;
+}
+
+// Emojis
+.emoji {
+    font-family: "color-emoji";
+}
+
+// Pseudo icons
+h1 i[class*="i"] {
+    display: inline-block;
+}
+h1 i[class*="i"]:after {
+    padding: 0 1rem;
+}
+i[class*="i"] {
+    font-style: normal !important;
+    color: white !important;
+    font-family: "color-emoji";
+}
+.i-contact {
+    &:after {
+        content: "✉️ ";
+    }
+}
+.i-link {
+    &:after {
+        content: "🔗 ";
+    }
+}
+.i-home {
+    &:after {
+        content: "🎮 ";
+    }
+}
+.i-news {
+    &:after {
+        content: "📰 ";
+    }
+}
