@@ -12,14 +12,15 @@ body {
 }
 #bg {
     // Background
-    background: green url("../assets/react-bg.jpg");
+    background: green url(/static/media/react-bg.b2e9c70a.jpg) center center /
+        cover no-repeat;
     filter: hue-rotate(300deg);
     pointer-events: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 #darken {
     // Dark overlay over background
@@ -79,6 +80,9 @@ hr {
 }
 .animated {
     transform-origin: bottom;
+}
+#root {
+    width: 100%;
 }
 
 // .card {

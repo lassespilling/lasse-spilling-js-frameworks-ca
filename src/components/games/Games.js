@@ -63,7 +63,9 @@ function Games() {
                     setLoading(false);
                 }, 0)
             );
-        if (window.innerWidth <= 750) {
+        if (window.innerWidth <= 500) {
+            setPaginationTotal(4);
+        } else if (window.innerWidth <= 750) {
             setPaginationTotal(5);
         } else if (window.innerWidth > 750 && window.innerWidth < 1000) {
             setPaginationTotal(10);
@@ -208,17 +210,17 @@ function Games() {
                         );
                     })}
                 </Row>
-                <div className="d-flex w-100 justify-content-center align-center">
-                    <div className="mx-5">
-                        <Badge variant="dark" className="p-2 mt-1">
-                            Current page: {page}
+                <div className="d-flex w-100 justify-content-center align-center mb-5">
+                    <div className="mr-3">
+                        <Badge variant="dark" className="p-3">
+                            Current: {page}
                         </Badge>
                     </div>
-                    <div className="mx-5">
+                    <div>
                         <Form.Group controlId="formBasicRangeCustom">
                             <Form.Label>Go to page: </Form.Label>
                             <Form.Control
-                                className="mt-1 rounded dark mx-2"
+                                className="mt-1 rounded dark mx-2 p-2"
                                 type="number"
                                 min="1"
                                 max="50"
