@@ -31,6 +31,7 @@ function Games() {
     const [favid, setFavid] = UseStickyState([], "favid");
     const [favDisabled, setFavDisabled] = useState([]);
     const [searchedGames, setsearchedGames] = useState([]);
+    const [query, setQuery] = useState("");
     const [paginationSize, setPaginationSize] = useState("lg");
     const [paginationTotal, setPaginationTotal] = useState(10);
     const [loading, setLoading] = useState(true);
@@ -42,7 +43,15 @@ function Games() {
     }
 
     useEffect(() => {
-        fetch(BASE_URL + "?page=" + page + "&page_size=" + pageSize)
+        fetch(
+            BASE_URL +
+                "?page=" +
+                page +
+                "&page_size=" +
+                pageSize +
+                "&search=" +
+                query
+        )
             .then(response => response.json())
             .then(json => {
                 setGames(json.results);
@@ -61,7 +70,7 @@ function Games() {
         } else if (window.innerWidth > 1000) {
             setPaginationTotal(15);
         }
-    }, [page, pageSize, paginationTotal]);
+    }, [page, pageSize, paginationTotal, query]);
 
     const setNewFavorite = (newfav, id) => {
         if (favorites.includes(newfav)) {
@@ -86,7 +95,6 @@ function Games() {
     const searchCards = function(e) {
         // Let's get the value the user typed in and make it lower case:
         const searchValue = e.target.value.toLowerCase();
-
         // create a new array from the games array
         const searchedArray = games.filter(function(char) {
             // make each name lowercase so we can check it properly with the search value
@@ -97,6 +105,8 @@ function Games() {
                 // if it does, return true
                 // this will add it to the new searched array
                 return true;
+            } else {
+                setQuery(searchValue);
             }
             return false;
         });
