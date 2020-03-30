@@ -5,7 +5,7 @@ import Emoji from "../layout/Emoji";
 const Heading = ({ content, symbol, symbolColor, symbolLabel, symbolSize }) => {
     // Receives content as prop child
     return (
-        <h1 className="text-center mb-2" style={{ fontSize: "5rem" }}>
+        <h1 className="text-center mb-2" style={{ fontSize: "4rem" }}>
             <Emoji
                 symbol={symbol}
                 label={symbolLabel}

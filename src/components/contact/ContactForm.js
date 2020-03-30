@@ -64,7 +64,7 @@ const ContactForm = () => {
                     onSubmit={handleSubmit(onSubmit)}
                     className="mx-auto mb-5 pb-5 row"
                 >
-                    <span className="text-muted text-right ml-auto w-100 float-right">
+                    <div className="text-muted text-center mx-auto mb-3 w-100">
                         <span
                             className="mr-3 position-relative"
                             style={{ top: "-0.4rem" }}
@@ -77,7 +77,7 @@ const ContactForm = () => {
                             onClick={() => toggle()}
                             label="enabled"
                         />
-                    </span>
+                    </div>
                     <div className="col-md-6 col-xl-4 offset-xl-2">
                         <Form.Group>
                             <Form.Label>

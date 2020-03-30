@@ -8,12 +8,14 @@ class Contact extends Component {
     render() {
         return (
             <FadeIn>
-                <Heading
-                    content=" Contact"
-                    symbol="✉️"
-                    symbolLabel="mail"
-                    symbolSize="120%"
-                ></Heading>
+                <div className="mt-5 mb-3">
+                    <Heading
+                        content=" Contact"
+                        symbol="✉️"
+                        symbolLabel="mail"
+                        symbolSize="120%"
+                    ></Heading>
+                </div>
                 <ContactForm></ContactForm>
             </FadeIn>
         );

@@ -138,12 +138,14 @@ function Games() {
     return (
         <>
             <FadeIn>
-                <Heading
-                    content=" Games"
-                    symbol="🎮"
-                    symbolLabel="video game controller"
-                    symbolSize="120%"
-                ></Heading>
+                <div className="my-5">
+                    <Heading
+                        content=" Games"
+                        symbol="🎮"
+                        symbolLabel="video game controller"
+                        symbolSize="120%"
+                    ></Heading>
+                </div>
             </FadeIn>
             <Favorites
                 favorites={favorites}
