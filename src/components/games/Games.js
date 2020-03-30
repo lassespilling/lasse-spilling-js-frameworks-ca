@@ -29,7 +29,7 @@ function Games() {
     const [games, setGames] = useState([]);
     const [favorites, setFavorite] = UseStickyState([], "favorites");
     const [favid, setFavid] = UseStickyState([], "favid");
-    const [favDisabled, setFavDisabled] = useState([]);
+    const [favDisabled, setFavDisabled] = UseStickyState([]);
     const [searchedGames, setsearchedGames] = useState([]);
     const [query, setQuery] = useState("");
     const [paginationSize, setPaginationSize] = useState("lg");
