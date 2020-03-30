@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react"; // React
 // Bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Pagination from "react-bootstrap/Pagination";
+import Form from "react-bootstrap/Form";
+import Badge from "react-bootstrap/Badge";
 
 // Constants
 import { BASE_URL } from "../../constants/api";
@@ -27,10 +30,18 @@ function Games() {
     const [favorites, setFavorite] = UseStickyState([], "favorites");
     const [favDisabled, setFavDisabled] = useState([]);
     const [searchedGames, setsearchedGames] = useState([]);
+    const [paginationSize, setPaginationSize] = useState("lg");
+    const [paginationTotal, setPaginationTotal] = useState(8);
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = UseStickyState(1, "page");
+    const [pageSize, setPageSize] = UseStickyState(1, "pageSize");
+
+    if (page < 1) {
+        setPage(1);
+    }
 
     useEffect(() => {
-        fetch(BASE_URL)
+        fetch(BASE_URL + "?page=" + page + "&page_size=" + pageSize)
             .then(response => response.json())
             .then(json => {
                 setGames(json.results);
@@ -42,7 +53,14 @@ function Games() {
                     setLoading(false);
                 }, 0)
             );
-    }, []);
+        if (window.innerWidth <= 750) {
+            setPaginationTotal(5);
+        } else if (window.innerWidth > 750 && window.innerWidth < 1000) {
+            setPaginationTotal(10);
+        } else if (window.innerWidth > 1000) {
+            setPaginationTotal(15);
+        }
+    }, [page, pageSize, paginationTotal]);
     const setNewFavorite = (newfav, id) => {
         if (favorites.includes(newfav)) {
             // Remove existing fav from array
@@ -86,6 +104,20 @@ function Games() {
         return <Loading />;
     }
 
+    let activePage = page;
+    let pageNumbers = [];
+    for (let number = 1; number <= paginationTotal; number++) {
+        pageNumbers.push(
+            <Pagination.Item
+                key={number}
+                active={number === activePage}
+                onClick={() => setPage(number)}
+            >
+                {number}
+            </Pagination.Item>
+        );
+    }
+
     return (
         <>
             <FadeIn>
@@ -102,7 +134,31 @@ function Games() {
             />
 
             <FadeIn>
-                <Search handleSearch={searchCards} />
+                <Form>
+                    <Row className="my-3 mb-1">
+                        <Col md={8}>
+                            <Form.Group>
+                                <Search handleSearch={searchCards} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={4}>
+                            <Form.Group controlId="formBasicRangeCustom">
+                                <Form.Label>Show: {pageSize}</Form.Label>
+                                <Form.Control
+                                    className="mt-1"
+                                    type="range"
+                                    min="10"
+                                    max="50"
+                                    step="10"
+                                    placeholder="1"
+                                    value={pageSize}
+                                    custom
+                                    onChange={e => setPageSize(e.target.value)}
+                                />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                </Form>
                 <Row className="mb-5 pb-5">
                     {searchedGames.map(game => {
                         const {
@@ -110,7 +166,8 @@ function Games() {
                             name,
                             background_image,
                             metacritic,
-                            released
+                            released,
+                            next
                         } = game;
                         return (
                             <Col
@@ -135,6 +192,37 @@ function Games() {
                         );
                     })}
                 </Row>
+                <div className="d-flex w-100 justify-content-center align-center">
+                    <div className="mx-5">
+                        <Badge variant="dark" className="p-2 mt-1">
+                            Current page: {page}
+                        </Badge>
+                    </div>
+                    <div className="mx-5">
+                        <Form.Group controlId="formBasicRangeCustom">
+                            <Form.Label>Go to page: </Form.Label>
+                            <Form.Control
+                                className="mt-1 rounded dark mx-2"
+                                type="number"
+                                min="1"
+                                max="50"
+                                step="1"
+                                placeholder="1"
+                                value={page}
+                                custom
+                                onChange={e => setPage(e.target.value)}
+                            />
+                        </Form.Group>
+                    </div>
+                </div>
+                <Pagination
+                    size={paginationSize}
+                    className="mx-auto d-flex justify-content-center mb-5 pb-5"
+                >
+                    <Pagination.Prev onClick={() => setPage(page - 1)} />
+                    {pageNumbers}
+                    <Pagination.Next onClick={() => setPage(page + 1)} />
+                </Pagination>
             </FadeIn>
         </>
     );

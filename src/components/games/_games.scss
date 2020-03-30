@@ -19,7 +19,7 @@
     &__menu--topright {
         position: absolute;
         top: 0.5rem;
-        right: 1.25rem;
+        right: 1rem;
         z-index: 1;
     }
 }
@@ -31,21 +31,13 @@
     text-overflow: ellipsis;
 }
 
-.search {
-    margin: 2em 0;
-}
-
-.clear-search {
-    margin-bottom: 30px;
-}
-
-.clear-search__button {
-    margin-left: 10px;
-}
-
 .platformBrand {
     height: 1.5em;
     &--invert {
         filter: brightness(0) invert(1);
     }
+}
+
+.pagination {
+    filter: invert(1) contrast(80%) hue-rotate(145deg);
 }

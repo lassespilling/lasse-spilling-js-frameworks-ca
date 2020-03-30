@@ -7,10 +7,10 @@ const Favorites = ({ favorites, resetFunction }) => {
     if (favorites && favorites.length >= 1) {
         return (
             <>
-                <h2 className="h4">You love:</h2>
+                <h2 className="h4">Your favorites:</h2>
                 <Button
                     variant="secondary"
-                    className="px-2 py-0"
+                    className="px-2 py-0 mr-2 mb-2"
                     onClick={resetFunction}
                 >
                     x

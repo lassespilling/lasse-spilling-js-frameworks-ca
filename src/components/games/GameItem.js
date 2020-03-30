@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
-import ScrollAnimation from "react-animate-on-scroll";
 import Emoji from "../layout/Emoji";
-import "animate.css/animate.min.css";
+import FadeIn from "react-fade-in";
 
 function GameItem({
     id,
@@ -37,7 +36,7 @@ function GameItem({
     ];
     month.current = month.names[month.number];
     return (
-        <ScrollAnimation animateIn="fadeIn" animateOnce="true">
+        <FadeIn>
             <Card className="bg-dark text-white">
                 <Card.Img
                     variant="top"
@@ -50,15 +49,17 @@ function GameItem({
                 />
                 <div className="card__menu--topleft">{name}</div>
                 <div className="card__menu--topright">
-                    <Badge variant="warning" className="mr-1">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/2/20/Metacritic.svg"
-                            alt=""
-                            height="11em"
-                            className="mr-1"
-                        />
-                        {rating}
-                    </Badge>
+                    {rating ? (
+                        <Badge variant="warning" className="mr-1">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/2/20/Metacritic.svg"
+                                alt=""
+                                height="11em"
+                                className="mr-1"
+                            />
+                            {rating}
+                        </Badge>
+                    ) : null}
                     <Badge variant="secondary">
                         {month.current}, {year}
                     </Badge>
@@ -98,7 +99,7 @@ function GameItem({
                     </div>
                 </Card.Body>
             </Card>
-        </ScrollAnimation>
+        </FadeIn>
     );
 }
 
