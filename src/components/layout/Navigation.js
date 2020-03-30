@@ -10,7 +10,12 @@ const Navigation = () => {
     return (
         <FadeIn>
             <Container className="container-nav">
-                <Navbar bg="dark" variant="dark rounded" expand="sm">
+                <Navbar
+                    bg="dark"
+                    variant="dark rounded"
+                    expand="sm"
+                    fixed="top"
+                >
                     <NavLink to="/" exact>
                         <Navbar.Brand>
                             <div className="logoScale">
@@ -27,16 +32,23 @@ const Navigation = () => {
                     </NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <NavLink to="/" exact className="nav-link rounded">
-                                <i className="i-home"></i>
-                                <span>Games</span>
+                        <Nav className="mx-auto">
+                            <NavLink
+                                to="/"
+                                exact
+                                className="nav-link rounded d-flex"
+                            >
+                                <i className="i-home mr-3 mt-1 h4"></i>
+                                <span className="h4">Games</span>
                             </NavLink>
                         </Nav>
-                        <Nav className="ml-auto">
-                            <NavLink to="/contact" className="nav-link rounded">
-                                <i className="i-contact"></i>
-                                <span>Contact</span>
+                        <Nav className="mx-auto">
+                            <NavLink
+                                to="/contact"
+                                className="nav-link rounded d-flex"
+                            >
+                                <i className="i-contact mr-3 mt-1 h4"></i>
+                                <span className="h4">Contact</span>
                             </NavLink>
                         </Nav>
                     </Navbar.Collapse>

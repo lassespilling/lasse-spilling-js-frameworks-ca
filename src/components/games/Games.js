@@ -70,7 +70,7 @@ function Games() {
         } else if (window.innerWidth > 750 && window.innerWidth < 1000) {
             setPaginationTotal(10);
         } else if (window.innerWidth > 1000) {
-            setPaginationTotal(15);
+            setPaginationTotal(14);
         }
     }, [page, pageSize, paginationTotal, query]);
 
@@ -139,7 +139,7 @@ function Games() {
         <>
             <FadeIn>
                 <Heading
-                    content="Games"
+                    content=" Games"
                     symbol="🎮"
                     symbolLabel="video game controller"
                     symbolSize="120%"
@@ -188,14 +188,7 @@ function Games() {
                             next
                         } = game;
                         return (
-                            <Col
-                                xs={12}
-                                sm={12}
-                                md={12}
-                                lg={12}
-                                xl={6}
-                                key={id}
-                            >
+                            <Col xs={12} sm={12} md={12} lg={6} xl={6} key={id}>
                                 <GameItem
                                     id={id}
                                     rating={metacritic}

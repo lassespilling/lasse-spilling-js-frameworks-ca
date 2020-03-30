@@ -9,13 +9,15 @@ const Favorites = ({ favorites, resetFunction, ids }) => {
         return (
             <>
                 <h2 className="h4">Your favorites:</h2>
-                <Button
-                    variant="secondary"
-                    className="px-2 py-0 mr-2 mb-2"
-                    onClick={resetFunction}
-                >
-                    x
-                </Button>
+                <FadeIn className="d-inline-block">
+                    <Button
+                        variant="secondary"
+                        className="px-2 py-0 mr-2 mb-2"
+                        onClick={resetFunction}
+                    >
+                        x
+                    </Button>
+                </FadeIn>
                 {ids.map((id, index) => (
                     <Link to={"games/" + id}>
                         <FadeIn className="d-inline-block">
@@ -29,11 +31,11 @@ const Favorites = ({ favorites, resetFunction, ids }) => {
         );
     } else {
         return (
-            <>
+            <FadeIn className="d-inline-block">
                 <Badge variant="secondary" className="m-1">
                     No favorites
                 </Badge>
-            </>
+            </FadeIn>
         );
     }
 };

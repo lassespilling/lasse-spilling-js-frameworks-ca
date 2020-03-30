@@ -62,8 +62,7 @@ const ContactForm = () => {
             <FadeIn>
                 <Form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="mx-auto mb-5 pb-5"
-                    style={{ maxWidth: "400px" }}
+                    className="mx-auto mb-5 pb-5 row"
                 >
                     <span className="text-muted text-right ml-auto w-100 float-right">
                         <span
@@ -79,102 +78,114 @@ const ContactForm = () => {
                             label="enabled"
                         />
                     </span>
-                    <Form.Group>
-                        <Form.Label>
-                            <Emoji
-                                symbol="🤝"
-                                label="person"
-                                top=".15em"
-                                size="130%"
+                    <div className="col-md-6 col-xl-4 offset-xl-2">
+                        <Form.Group>
+                            <Form.Label>
+                                <Emoji
+                                    symbol="🤝"
+                                    label="person"
+                                    top=".15em"
+                                    size="130%"
+                                />
+                                <h3 className="d-inline"> Name</h3>
+                            </Form.Label>
+                            <Form.Control
+                                type="text"
+                                autoComplete={
+                                    autoComp ? "given-name" : "no-fname"
+                                }
+                                placeholder="First name"
+                                name="firstn"
+                                ref={register}
+                                className="mb-2"
                             />
-                            <span>Name</span>
-                        </Form.Label>
-                        <Form.Control
-                            type="text"
-                            autoComplete={autoComp ? "given-name" : "no-fname"}
-                            placeholder="First name"
-                            name="firstn"
-                            ref={register}
-                            className="mb-2"
-                        />
-                        {errors.firstn && (
-                            <ErrorMessage>{errors.firstn.message}</ErrorMessage>
-                        )}
-                        <Form.Control
-                            type="text"
-                            autoComplete={autoComp ? "family-name" : "no-lname"}
-                            placeholder="Last name"
-                            name="lastn"
-                            ref={register}
-                        />
-                        {errors.lastn && (
-                            <ErrorMessage>{errors.lastn.message}</ErrorMessage>
-                        )}
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>
-                            <Emoji
-                                symbol="📝"
-                                label="paper"
-                                top=".15em"
-                                size="130%"
+                            {errors.firstn && (
+                                <ErrorMessage>
+                                    {errors.firstn.message}
+                                </ErrorMessage>
+                            )}
+                            <Form.Control
+                                type="text"
+                                autoComplete={
+                                    autoComp ? "family-name" : "no-lname"
+                                }
+                                placeholder="Last name"
+                                name="lastn"
+                                ref={register}
                             />
-                            <span>Message</span>
-                        </Form.Label>
-                        <Form.Control
-                            as="textarea"
-                            rows="5"
-                            placeholder="Message"
-                            name="message"
-                            ref={register}
-                            className="mb-2"
-                        />
-                        {errors.message && (
-                            <ErrorMessage>
-                                {errors.message.message}
-                            </ErrorMessage>
-                        )}
-                    </Form.Group>
-                    <Form.Group controlId="formEmail">
-                        <Form.Label>
-                            <Emoji
-                                symbol="✉️"
-                                label="mail"
-                                top=".15em"
-                                size="130%"
+                            {errors.lastn && (
+                                <ErrorMessage>
+                                    {errors.lastn.message}
+                                </ErrorMessage>
+                            )}
+                        </Form.Group>
+                        <Form.Group controlId="formEmail">
+                            <Form.Label>
+                                <Emoji
+                                    symbol="✉️"
+                                    label="mail"
+                                    top=".15em"
+                                    size="130%"
+                                />
+                                <h3 className="d-inline"> E-mail</h3>
+                            </Form.Label>
+                            <Form.Control
+                                type="text"
+                                autoComplete={autoComp ? "email" : "no-email"}
+                                placeholder="E-ma&#8203;il" // autocomplete hack
+                                name="em" // autocomplete hack
+                                ref={register}
+                                className="mb-2"
                             />
-                            <span>E-mail</span>
-                        </Form.Label>
-                        <Form.Control
-                            type="text"
-                            autoComplete={autoComp ? "email" : "no-email"}
-                            placeholder="E-ma&#8203;il" // autocomplete hack
-                            name="em" // autocomplete hack
-                            ref={register}
-                            className="mb-2"
-                        />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
-                        {errors.email && (
-                            <ErrorMessage>{errors.em.message}</ErrorMessage>
-                        )}
-                    </Form.Group>
-                    <Form.Group className="text-center">
-                        <Button
-                            type="submit"
-                            variant="outline-success"
-                            className="btn-contact pb-2 pt-1"
-                        >
-                            <Emoji
-                                symbol="📩"
-                                label="send mail"
-                                top="-0.1em"
-                                size="130%"
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                            {errors.email && (
+                                <ErrorMessage>{errors.em.message}</ErrorMessage>
+                            )}
+                        </Form.Group>
+                    </div>
+                    <div className="col-md-6 col-xl-4">
+                        <Form.Group>
+                            <Form.Label>
+                                <Emoji
+                                    symbol="📝"
+                                    label="paper"
+                                    top=".15em"
+                                    size="130%"
+                                />
+                                <h3 className="d-inline"> Message</h3>
+                            </Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows="6"
+                                placeholder="Message"
+                                name="message"
+                                ref={register}
+                                className="mb-2"
                             />
-                            <span>Send</span>
-                        </Button>
-                    </Form.Group>
+                            {errors.message && (
+                                <ErrorMessage>
+                                    {errors.message.message}
+                                </ErrorMessage>
+                            )}
+                        </Form.Group>
+                        <Form.Group className="text-center">
+                            <Button
+                                type="submit"
+                                variant="outline-success"
+                                className="btn-contact pb-2 pt-1"
+                            >
+                                <Emoji
+                                    symbol="📩"
+                                    label="send mail"
+                                    top="-0.1em"
+                                    size="130%"
+                                />
+                                <span>Send</span>
+                            </Button>
+                        </Form.Group>
+                    </div>
                 </Form>
             </FadeIn>
         );

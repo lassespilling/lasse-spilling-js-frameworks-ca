@@ -39,7 +39,7 @@ function GameItem({
     month.current = month.names[month.number];
     return (
         <FadeIn>
-            <ScrollAnimation animateIn="fadeInUp" animateOnce="true" offset="0">
+            <ScrollAnimation animateIn="fadeInUp" animateOnce="true">
                 <Card className="bg-dark text-white">
                     <Card.Img
                         variant="top"

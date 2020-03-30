@@ -9,7 +9,7 @@ function Search({ handleSearch }) {
         <InputGroup className="search">
             <Form.Label>Search:</Form.Label>
             <FormControl
-                className="w-100"
+                className="w-100 rounded"
                 type="search"
                 placeholder="Search by name..."
                 onChange={event => handleSearch(event)}

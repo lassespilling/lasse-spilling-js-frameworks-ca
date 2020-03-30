@@ -94,9 +94,6 @@ label {
             background: rgba(0, 0, 0, 0.5);
             margin: 0 0.3rem;
             font-size: 1rem;
-            & > i[class*="i"]:after {
-                transform: scale(1.4);
-            }
         }
         &.active {
             &:hover {
@@ -109,9 +106,6 @@ label {
                 text-shadow: 0 0 0.9px white, 0 0 0.9px white, 0 0 0.9px white;
                 transition: all 0.3s ease-in-out;
                 color: rgba(255, 255, 255, 0.5) !important;
-            }
-            & > i[class*="i"]:after {
-                transform: scale(1.4);
             }
             &:before {
                 content: "";
@@ -175,10 +169,18 @@ label {
     }
 }
 .navbar {
-    background: rgb(16, 54, 62) !important;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8);
+    background: #10363e !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
 }
-.navbar {
-    max-width: 50rem;
-    margin: auto;
+@media screen and (min-width: 1000px) {
+    .navbar {
+        max-width: 900px;
+        margin: auto;
+        margin-top: 1rem;
+    }
+}
+@media screen and (max-width: 700px) {
+    .container-nav {
+        margin-bottom: 4rem;
+    }
 }

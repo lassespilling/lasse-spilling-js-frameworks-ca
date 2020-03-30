@@ -9,7 +9,7 @@ class Contact extends Component {
         return (
             <FadeIn>
                 <Heading
-                    content="Contact"
+                    content=" Contact"
                     symbol="✉️"
                     symbolLabel="mail"
                     symbolSize="120%"
