@@ -28,6 +28,7 @@ import "animate.css/animate.min.css";
 function Games() {
     const [games, setGames] = useState([]);
     const [favorites, setFavorite] = UseStickyState([], "favorites");
+    const [favid, setFavid] = UseStickyState([], "favid");
     const [favDisabled, setFavDisabled] = useState([]);
     const [searchedGames, setsearchedGames] = useState([]);
     const [paginationSize, setPaginationSize] = useState("lg");
@@ -61,20 +62,24 @@ function Games() {
             setPaginationTotal(15);
         }
     }, [page, pageSize, paginationTotal]);
+
     const setNewFavorite = (newfav, id) => {
         if (favorites.includes(newfav)) {
             // Remove existing fav from array
             setFavorite(favorites.filter(e => e !== newfav));
+            setFavid(favid.filter(e => e !== id));
 
             // Disable fav btn
             setFavDisabled(favDisabled.filter(e => e !== id));
         } else if (!favorites.includes(newfav)) {
             setFavorite(favorites => [...favorites, newfav]);
+            setFavid(favorites => [...favid, id]);
             setFavDisabled(favDisabled => [...favDisabled, id]);
         }
     };
     const resetFavorites = () => {
         setFavorite([], "favorites");
+        setFavid([], "favid");
         setFavDisabled(favDisabled => []);
     };
 
@@ -130,6 +135,7 @@ function Games() {
             </FadeIn>
             <Favorites
                 favorites={favorites}
+                ids={favid}
                 resetFunction={() => resetFavorites()}
             />
 

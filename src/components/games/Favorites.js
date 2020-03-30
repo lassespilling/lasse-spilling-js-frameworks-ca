@@ -2,9 +2,10 @@ import React, { useEffect } from "react"; // React
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import FadeIn from "react-fade-in";
+import { Link } from "react-router-dom";
 
-const Favorites = ({ favorites, resetFunction }) => {
-    if (favorites && favorites.length >= 1) {
+const Favorites = ({ favorites, resetFunction, ids }) => {
+    if (favorites && favorites.length >= 1 && ids && ids.length >= 1) {
         return (
             <>
                 <h2 className="h4">Your favorites:</h2>
@@ -15,12 +16,14 @@ const Favorites = ({ favorites, resetFunction }) => {
                 >
                     x
                 </Button>
-                {favorites.map(fav => (
-                    <FadeIn className="d-inline-block">
-                        <Badge variant="danger" className="m-1">
-                            {fav}
-                        </Badge>
-                    </FadeIn>
+                {ids.map((id, index) => (
+                    <Link to={"games/" + id}>
+                        <FadeIn className="d-inline-block">
+                            <Badge variant="danger" className="m-1">
+                                {favorites[index]}
+                            </Badge>
+                        </FadeIn>
+                    </Link>
                 ))}
             </>
         );
