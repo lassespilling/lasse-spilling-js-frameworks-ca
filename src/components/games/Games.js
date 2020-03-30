@@ -31,10 +31,10 @@ function Games() {
     const [favDisabled, setFavDisabled] = useState([]);
     const [searchedGames, setsearchedGames] = useState([]);
     const [paginationSize, setPaginationSize] = useState("lg");
-    const [paginationTotal, setPaginationTotal] = useState(8);
+    const [paginationTotal, setPaginationTotal] = useState(10);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = UseStickyState(1, "page");
-    const [pageSize, setPageSize] = UseStickyState(1, "pageSize");
+    const [pageSize, setPageSize] = UseStickyState(10, "pageSize");
 
     if (page < 1) {
         setPage(1);
